@@ -1,0 +1,55 @@
+/**
+* Hail element
+* -------------------------
+*/
+.weather__hail{
+  
+  // inherit font size to size relative to parent 
+  font-size:inherit;
+  
+  // @var @percent
+  // 1em/100 - use ems as an em will always be relative to font-size of self
+  // allows us to use percentages where length units are normally required
+  @percent: 0.01em;
+  
+  // square @colorBackground background  
+  top:28%;  
+  left:30%;
+  width:(34*@percent);
+  height:(34*@percent);   
+  
+  background:@colorBackground;
+  border:(9*@percent) solid @colorBackground;
+    
+  z-index:3;
+  
+  &:before{
+    // hailstone
+    content:"";
+    display: block;      
+    
+    .circle(100%);   
+    
+    background:#969696;
+  }
+}
+
+/**
+* Hail modifiers
+* -------------------------
+*/
+.weather__hail--heavy{
+  
+  // inherit font size to size relative to parent 
+  font-size:inherit;
+  
+  // @var @percent
+  // 1em/100 - use ems as an em will always be relative to font-size of self
+  // allows us to use percentages where length units are normally required
+  @percent:0.01em;
+
+  &:before{
+    // second hailstone
+    box-shadow:(-20*@percent) (20*@percent) 0 0 #969696;    
+  }
+}

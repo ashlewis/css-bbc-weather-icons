@@ -1,0 +1,65 @@
+//----------------------------------------------
+// Mixins
+//----------------------------------------------
+
+/**
+* Create circle element
+* -------------------------
+*
+* @param {int} diameter
+*/
+.circle(@diameter){
+  width: @diameter;
+  height: @diameter; 
+  border-radius: @diameter;     
+} 
+
+/**
+* Create sun rays
+* -------------------------
+* central circle and 4 "rays" (at N, E, S, W)
+* 
+*/
+.rays(){
+  
+  // @var @percent
+  // 1em/100 - use ems as an em will always be relative to font-size of self
+  // allows us to use percentages where length units are normally required
+  @percent:0.01em; 
+  
+  // @var int @width - spoke width as percentage of "wheel" size
+  @width: 8;
+  // @var int @height - spoke height as percentage of "wheel" size
+  @height: 18;
+  // @var hex|string|etc. @color - spoke color
+  @color: #ffd243;
+  
+  .circle((100*@percent));
+  
+  // color stop values based on spoke width*/
+  @colorStop1 : ((50-@width/2)*@percent);
+  @colorStop2 : ((50+@width/2)*@percent);  
+
+  background: /*N*/
+              linear-gradient(90deg, transparent @colorStop1, @color 0, @color @colorStop2 ,transparent 0) no-repeat 0 0,
+              /*W*/
+              linear-gradient(transparent @colorStop1, @color 0, @color @colorStop2, transparent 0) no-repeat 0 0,
+              /*S*/
+              linear-gradient(90deg, transparent @colorStop1, @color 0, @color @colorStop2, transparent 0) no-repeat 0 100%,
+              /*E*/
+              linear-gradient(transparent @colorStop1, @color 0, @color @colorStop2, transparent 0) no-repeat 100% 0,
+              /* middle */
+              radial-gradient(circle, @color 0, @color (27*@percent), transparent 0, transparent 100%) no-repeat center center;
+                       
+  background-size: /*N*/    
+                  (100*@percent) (@height*@percent),
+                  /*W*/
+                  (@height*@percent) (100*@percent),
+                  /*S*/  
+                  (100*@percent) (@height*@percent),
+                  /*E*/
+                  (@height*@percent) (100*@percent),
+                  /*middle*/
+                  (100*@percent) (100*@percent);
+                  
+}

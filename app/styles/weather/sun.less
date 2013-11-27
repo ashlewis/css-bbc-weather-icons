@@ -1,0 +1,46 @@
+/**
+* Sun element
+* -------------------------
+*/
+.weather__sun{  
+ 
+  // use rems to size relative to root font-size  
+  font-size:10rem;
+  
+  // N, E, S, W
+  .rays();
+  margin:1rem 5rem 1rem 5rem;  
+  
+  z-index:1;
+  
+  &:after,
+  &:before{  
+    content:"";  
+    display:block;    
+    position:absolute;  
+    
+    .rays();  
+     
+    // anti-alias fix
+    backface-visibility: hidden;  
+  }
+  
+  // NNE, ESE, SSW, WNW
+  &:before{
+    transform:rotate(30deg); 
+  }  
+  
+  // NNW, WSW, SSE, ENE
+  &:after{
+    transform:rotate(-30deg);  
+  }
+}
+
+/**
+* Sun modifiers
+*/
+.weather__sun--with-cloud{
+  position:relative;
+  margin:1rem 1.5rem 1rem 8.5rem;
+  
+}

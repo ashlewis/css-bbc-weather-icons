@@ -1,0 +1,116 @@
+/**
+* Cloud element
+* -------------------------
+*/
+.weather__cloud{
+  
+  // use rems to size relative to root font-size  
+  font-size:11rem;
+  
+  // @var @percent
+  // 1em/100 - use ems as an em will always be relative to font-size of self
+  // allows us to use percentages where length units are normally required
+  @percent:0.01em; 
+  
+  // base
+  .circle(37*@percent);   
+  
+  width: (100*@percent);  
+  border:(8*@percent) solid;  
+  margin:3.94rem 4.5rem 3.99rem 4.5rem;
+  
+  background:@colorBackground;  
+
+  box-shadow:0 0 0 (10*@percent) @colorBackground;   
+  z-index:2;
+    
+  &:before,
+  &:after{
+    content:"";  
+    display:block;
+    position:absolute;
+    
+    border:(@percent*8) solid;
+    background-clip: padding-box;
+    
+    background:@colorBackground;
+    
+    transform-origin: 50% 50%;
+  }
+  
+  // top arc
+  &:before{
+    .circle(42*@percent);
+    top:(-25*@percent);
+    left:(12*@percent);
+    
+    transform:rotate(15deg); 
+                    
+    clip: rect(
+            0,
+            /* width+2*border */
+            (@percent*58),
+            /* (width/2)+border */
+            (@percent*29), 
+            0
+          );
+  }
+  
+  // left arc
+  &:after{
+    // parent-2*border
+    .circle(21*@percent);
+    
+    top:(-8.5*@percent);
+    left:(-8.5*@percent);
+
+    clip: rect(
+            0,           
+            /* width+(2*border) */
+            (@percent*37),      
+            /* (width/2)+border */
+            (@percent*18.5),     
+            0
+          );
+    
+    transform:rotate(-30deg); 
+  }
+  
+  .weather__sun &{
+    top:(27*@percent);
+    right:(27*@percent);
+    box-shadow: 0 0 0 (8*@percent) @colorBackground,
+               /* hide suns rays */
+               (-17*@percent) (33*@percent) 0 (-8*@percent) @colorBackground,
+               (-17*@percent) (-33*@percent) 0 (-8*@percent) @colorBackground;    
+  }
+  
+  .weather__moon &{
+    top:(28*@percent);
+    right:(36*@percent);
+    box-shadow:0 0 0 (4*@percent) @colorBackground; 
+  }
+}
+
+/**
+* Cloud modifiers
+* -------------------------
+*/
+.weather__cloud--silver{
+  border-color:#ccc;
+  &:before,
+  &:after{
+     border-color:#ccc;
+  }
+}
+
+.weather__cloud--black{
+  border-color:#444;
+  &:before,
+  &:after{
+     border-color:#444;
+  }
+}
+.weather__cloud--with-precipitation{
+  margin-bottom:3.99rem;
+}

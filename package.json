@@ -1,0 +1,25 @@
+{
+  "name": "css-bbc-weather-icons",
+  "version": "0.0.0",
+  "description": "css-bbc-weather-icons =====================",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ashlewis/css-bbc-weather-icons.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "matchdep": "~0.3.0",
+    "grunt-contrib-less": "~0.8.2",
+    "grunt-autoprefixer": "~0.4.1",
+    "grunt-csso": "~0.5.2",
+    "grunt-contrib-csslint": "~0.1.2"
+  }
+}

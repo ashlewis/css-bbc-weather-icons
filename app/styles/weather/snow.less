@@ -1,0 +1,72 @@
+/**
+* Snow element
+* -------------------------
+*/
+.weather__snow{
+  
+  // inherit font size to size relative to parent  
+  font-size:inherit;
+  
+  // @var @percent
+  // 1em/100 - use ems as an em will always be relative to font-size of self
+  // allows us to use percentages where length units are normally required
+  @percent:0.01em;
+  
+  // vertical spoke
+  top:60%;  
+  left:48%;  
+  width:5%;  
+  height:100%; 
+  
+  background:#969696; 
+ 
+  z-index:3;
+  
+  // square @colorBackground background
+  box-shadow: 0 (20*@percent) 0 (20*@percent) @colorBackground;
+  
+  // diagonal spokes
+  &:before,
+  &:after{
+    content:"";
+    display: block; 
+    position:absolute;
+    width:100%;
+    height:100%;
+    
+    background:#969696;     
+  }
+    
+  &:before{
+    transform:rotate(60deg); 
+  }
+  
+  &:after{
+    transform:rotate(-60deg); 
+  }
+}
+
+/**
+* Snow modifiers
+* -------------------------
+*/
+.weather__snow--heavy{
+  
+  // inherit font size to size relative to parent   
+  font-size:inherit;
+  
+  // @var @percent
+  // 1em/100 - use ems as an em will always be relative to font-size of self
+  // allows us to use percentages where length units are normally required
+  @percent:0.01em;
+
+  box-shadow:(-20*@percent) (21*@percent) 0 0 #969696,
+             0 (20*@percent) 0 (20*@percent) @colorBackground;
+  
+  &:before{
+    box-shadow:(8*@percent) (28*@percent) 0 0 #969696; 
+  }
+  &:after{
+    box-shadow:(-28*@percent) (-7*@percent) 0 0 #969696;
+  }
+}

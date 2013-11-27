@@ -1,0 +1,23 @@
+/**
+* Weather element
+* -------------------------
+*/
+.weather{
+    margin:5rem auto;
+
+    text-align: center;
+
+    background:@colorBackground;
+}
+
+.weather__icon{
+    
+  position:relative;
+  display:inline-block; 
+  
+  & > .weather__icon{
+      position:absolute;
+      margin:0;
+      float:none;
+  }
+}

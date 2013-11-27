@@ -1,0 +1,44 @@
+/**
+* Moon element
+* -------------------------
+*/
+.weather__moon{
+  
+  // use rems to size relative to root font-size  
+  font-size:6rem;
+  
+  // @var @percent
+  // 1em/100 - use ems as an em will always be relative to font-size of self
+  // allows us to use percentages where length units are normally required
+  @percent:0.01em;
+  
+  .circle((100*@percent));
+  margin:3rem 7rem 3rem 7rem;  
+  background:#969696;
+  
+  z-index:1;
+    
+  &:after{
+    // mask
+    content:"";  
+    display:block;
+    position:absolute;
+    
+    .circle((100*@percent));
+    
+    bottom:(15*@percent);
+    left:(30*@percent);    
+
+    background:@colorBackground;
+    
+    transform:rotate(-30deg); 
+    // clip overflow as much as possible
+    // cannot use overflow hidden on parent as it will also hide cloud on moon--with-cloud
+    clip:rect(2*@percent, (68*@percent), (98*@percent), 0);
+  }
+}
+
+.weather__moon--with-cloud{
+  position:relative;
+  margin:1rem 0.6rem 5rem 13.4rem;  
+}

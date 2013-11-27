@@ -1,0 +1,52 @@
+/**
+* Lightning element
+* -------------------------
+*/
+.weather__lightning{
+  
+  // inherit font size to size relative to parent   
+  font-size:inherit;
+  
+  // @var @percent
+  // 1em/100 - use ems as an em will always be relative to font-size of self
+  // allows us to use percentages where length units are normally required
+  @percent:0.01em;
+
+  top:70%;
+  left:30%;
+  width:25%;
+  height:250%;   
+  
+  background:#FDEC38;  
+  
+  // @colorBackgroundspace left
+  box-shadow:(-12*@percent) 0 0 0 @colorBackground;
+  
+  transform:skewX(-30deg);
+  
+  z-index:3;
+
+  &:before,
+  &:after{
+    content:"";
+    position:absolute;
+    height:43%;
+    background:@colorBackground;
+  }
+  
+  // top right mask
+  &:before{
+    width:60%;
+    top:0;
+    right:-10%;
+    transform:skewX(-5deg);
+  }
+  
+  // bottom left mask
+  &:after{
+    width:100%;
+    bottom:0;
+    left:-15%;
+    transform:skewX(15deg);
+  } 
+}

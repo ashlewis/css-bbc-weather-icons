@@ -1,0 +1,45 @@
+/**
+* Rain element
+* -------------------------
+*/
+.weather__rain{
+  
+  // square @colorBackground background
+  top:30%;  
+  left:30%;  
+  width:40%;
+  height:125%; 
+  
+  background:@colorBackground; 
+ 
+  z-index:3;
+  
+  &:before{
+    
+   // raindrop
+   content:"";
+   display:block;
+   position:absolute;
+    
+   top:40%;
+   left:18%;   
+   width:60%;
+   height:80%;
+    
+   background: #5999CE;
+    
+   border-radius: 50% 0 50% 50%;
+   transform:skewX(-10deg) skewY(-10deg) rotateZ(-10deg); 
+  }
+}
+
+/**
+* Rain modifiers
+* -------------------------
+*/
+.weather__rain--heavy{
+  &:before{
+    // second raindrop
+    box-shadow:-3rem 1rem 0 0 #5999CE;
+  }
+}
