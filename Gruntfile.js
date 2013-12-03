@@ -15,7 +15,7 @@ module.exports = function(grunt) {
             dev: {
                 // copy index file to dist                
                 src: ['app/index.html'],
-                dest: 'app/temp/index.html'                
+                dest: 'app/dev/index.html'                
             },
             dist: {
                 // copy index file to dist
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
         autoprefixer: {
             dev: {  
                 files: {
-                    'app/temp/css/main.css': 'app/temp/css/compiled.css'
+                    'app/dev/css/main.css': 'app/temp/css/compiled.css'
                 }
             },
             dist: {  
@@ -59,7 +59,7 @@ module.exports = function(grunt) {
                 'compatible-vendor-prefixes': false,
                 'gradients': false
             },
-            src: ['app/temp/css/autoprefixed.css']
+            src: ['app/dev/css/main.css']
                  
         },
 
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
         csso: {
           dist: {
             files: {
-              'app/dist/css/main.css': ['app/temp/css/autoprefixed.css']
+              'app/dist/css/main.css': 'app/temp/css/autoprefixed.css'
             }
           }
         },        
@@ -92,6 +92,13 @@ module.exports = function(grunt) {
                 files: ['app/index.html'],
                 tasks: ['copy:dev']
             }  
+        },
+
+        'gh-pages': {
+            options: {
+                base: 'app/dist'
+            },
+            src: '**/*'
         }
 
     });
@@ -110,7 +117,6 @@ module.exports = function(grunt) {
         'copy:dist',
         'less',
         'autoprefixer',
-        'csslint',
         'csso'    
     ]);
 
