@@ -21,7 +21,13 @@ module.exports = function(grunt) {
                 // copy index file to dist
                 src: ['app/index.html'],
                 dest: 'app/dist/index.html'
-            }            
+            },
+            'gh-pages': {
+                expand: true,
+                cwd: 'app/dist/',
+                src: '**',
+                dest: 'app/gh-pages/',
+            }         
         },
 
         // less compliation
@@ -92,15 +98,7 @@ module.exports = function(grunt) {
                 files: ['app/index.html'],
                 tasks: ['copy:dev']
             }  
-        },
-
-        'gh-pages': {
-            options: {
-                base: 'app/dist'
-            },
-            src: '**/*'
         }
-
     });
     
     // dev tasks
@@ -117,7 +115,8 @@ module.exports = function(grunt) {
         'copy:dist',
         'less',
         'autoprefixer',
-        'csso'    
+        'csso',
+        'copy:gh-pages'
     ]);
 
     // Default task(s).
